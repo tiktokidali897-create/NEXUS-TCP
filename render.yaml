@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: hasib-codex
+    runtime: python
+    plan: free
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: python app.py
+    healthCheckPath: /healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ADMIN_PASS          # password of admin user "hasib10"  (set it in the Render dashboard)
+        sync: false
+      - key: USER_PASS           # password of user "hasibtcp"        (set it in the Render dashboard)
+        sync: false
+    # Paid plans only: keep users + bot files across deploys.  Uncomment BOTH the disk and DATA_DIR.
+    # disk:
+    #   name: data
+    #   mountPath: /data
+    #   sizeGB: 1
+    # (and add envVar  DATA_DIR = /data )

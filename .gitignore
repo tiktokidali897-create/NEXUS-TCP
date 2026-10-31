@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+users.json
+.secret_key
+bot[0-9]*.txt
+platform_mode*.txt

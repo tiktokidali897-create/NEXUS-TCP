@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TEAM NEXUS — Panel</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<style>
+:root{
+  --nx-orange:#f59e0b;
+  --nx-light:#fbbf24;
+  --nx-bg:#090b10;
+  --nx-card:#141821;
+  --nx-border:rgba(255,255,255,.09);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(245,158,11,.10),transparent 42%),
+    linear-gradient(145deg,#080a0f,#11151e 55%,#080a0f)!important;
+  color:#f5f5f5!important;
+  font-family:Inter,Arial,sans-serif!important;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  opacity:.35;
+  background-image:
+    radial-gradient(circle,rgba(251,191,36,.8) 1px,transparent 1.7px),
+    radial-gradient(circle,rgba(255,255,255,.55) 1px,transparent 1.7px);
+  background-size:95px 110px,145px 165px;
+  background-position:0 0,40px 60px;
+  animation:nexusDots 24s linear infinite;
+}
+@keyframes nexusDots{
+  from{background-position:0 0,40px 60px}
+  to{background-position:0 -500px,40px -440px}
+}
+.blobs{display:none!important}
+.shell{
+  position:relative;
+  z-index:1;
+}
+.side{
+  background:rgba(15,18,25,.97)!important;
+  border-right:1px solid var(--nx-border)!important;
+  box-shadow:12px 0 40px rgba(0,0,0,.25)!important;
+  backdrop-filter:blur(18px);
+}
+.logo{
+  padding-bottom:22px!important;
+  border-bottom:1px solid var(--nx-border)!important;
+}
+.logo .mark{
+  background:linear-gradient(135deg,#f59e0b,#fbbf24)!important;
+  color:#17120a!important;
+  border-radius:13px!important;
+  box-shadow:0 5px 20px rgba(245,158,11,.18)!important;
+}
+.logo b{
+  color:#fff!important;
+  letter-spacing:1.5px!important;
+  font-weight:900!important;
+}
+.logo small{
+  color:var(--nx-light)!important;
+  letter-spacing:2px!important;
+}
+.navlbl{
+  color:#818999!important;
+  letter-spacing:2.5px!important;
+  font-weight:800!important;
+}
+.nav{
+  border:1px solid transparent!important;
+  border-radius:11px!important;
+  margin-bottom:5px!important;
+  transition:background .2s,border-color .2s,color .2s!important;
+  color:#bfc5d0!important;
+}
+.nav:hover{
+  background:rgba(255,255,255,.055)!important;
+  border-color:rgba(245,158,11,.2)!important;
+  color:#fff!important;
+}
+.nav.on{
+  background:rgba(245,158,11,.13)!important;
+  border-color:rgba(245,158,11,.35)!important;
+  color:#ffd477!important;
+}
+.nav .e{filter:none!important}
+.tag{
+  background:rgba(245,158,11,.14)!important;
+  color:#fbbf24!important;
+  border:1px solid rgba(245,158,11,.2)!important;
+  border-radius:20px!important;
+}
+.me{
+  border-top:1px solid var(--nx-border)!important;
+  padding-top:14px!important;
+}
+.av{
+  background:linear-gradient(135deg,#f59e0b,#fbbf24)!important;
+  color:#17120a!important;
+  font-weight:900!important;
+}
+.main{
+  background:transparent!important;
+}
+.top{
+  background:rgba(17,21,30,.82)!important;
+  border:1px solid var(--nx-border)!important;
+  border-radius:16px!important;
+  padding:14px 18px!important;
+  backdrop-filter:blur(14px);
+  box-shadow:0 8px 28px rgba(0,0,0,.18)!important;
+  margin-bottom:20px!important;
+}
+.top h1{
+  color:#fff!important;
+  font-weight:900!important;
+  letter-spacing:.5px!important;
+}
+.top p{color:#9ba3b2!important}
+.pill{
+  background:rgba(255,255,255,.045)!important;
+  border:1px solid var(--nx-border)!important;
+  color:#fbbf24!important;
+  border-radius:30px!important;
+}
+.dot{box-shadow:0 0 9px currentColor}
+.card{
+  background:rgba(20,24,33,.94)!important;
+  border:1px solid var(--nx-border)!important;
+  border-radius:17px!important;
+  box-shadow:0 12px 35px rgba(0,0,0,.20)!important;
+  backdrop-filter:blur(12px);
+  transition:border-color .2s,transform .2s!important;
+}
+.card:hover{
+  border-color:rgba(245,158,11,.25)!important;
+}
+.card h3{
+  color:#fff!important;
+  font-weight:800!important;
+}
+.stat .ic{
+  background:rgba(245,158,11,.12)!important;
+  color:#fbbf24!important;
+  border-radius:12px!important;
+}
+.stat .v{
+  color:#fff!important;
+  font-weight:900!important;
+}
+.stat .l{color:#929aaa!important}
+.field label{
+  color:#b9c0cc!important;
+  font-weight:700!important;
+}
+.inp{
+  background:rgba(255,255,255,.045)!important;
+  border:1px solid rgba(255,255,255,.11)!important;
+  border-radius:11px!important;
+  transition:border-color .2s,box-shadow .2s!important;
+}
+.inp:focus-within{
+  border-color:rgba(245,158,11,.7)!important;
+  box-shadow:0 0 0 3px rgba(245,158,11,.08)!important;
+}
+.inp input,.inp select{
+  color:#fff!important;
+  background:transparent!important;
+}
+.inp input::placeholder{color:#737d8c!important}
+.inp select option{
+  background:#151923;
+  color:#fff;
+}
+.inp .ic,.ic{
+  color:#fbbf24!important;
+}
+.eye{
+  color:#fbbf24!important;
+}
+.btn{
+  background:linear-gradient(120deg,#f59e0b,#fbbf24)!important;
+  color:#17120a!important;
+  border:1px solid transparent!important;
+  border-radius:10px!important;
+  font-weight:800!important;
+  transition:filter .2s,transform .2s!important;
+}
+.btn:hover{
+  filter:brightness(1.08)!important;
+  transform:translateY(-1px);
+}
+.btn.ghost{
+  background:rgba(255,255,255,.045)!important;
+  color:#e4e7ed!important;
+  border:1px solid rgba(255,255,255,.12)!important;
+}
+.btn.ghost:hover{
+  background:rgba(245,158,11,.1)!important;
+  border-color:rgba(245,158,11,.4)!important;
+  color:#ffd477!important;
+}
+.btn.green{
+  background:linear-gradient(120deg,#f59e0b,#fbbf24)!important;
+  color:#17120a!important;
+}
+.btn.red{
+  background:linear-gradient(120deg,#a52b40,#d83b50)!important;
+  color:#fff!important;
+}
+.btn.sm{border-radius:9px!important}
+.crown{
+  background:rgba(245,158,11,.14)!important;
+  color:#fbbf24!important;
+  border:1px solid rgba(245,158,11,.25)!important;
+  border-radius:20px!important;
+}
+.hint,.empty{color:#929aaa!important}
+.line{
+  border-bottom:1px solid var(--nx-border)!important;
+}
+.line b{color:#f0f1f4!important}
+.line small{color:#9098a7!important}
+.switch input:checked+span{
+  background:#f59e0b!important;
+}
+.console{
+  background:#080b10!important;
+  color:#d8bd87!important;
+  border:1px solid rgba(255,255,255,.09)!important;
+  border-radius:12px!important;
+}
+.console::-webkit-scrollbar{width:5px}
+.console::-webkit-scrollbar-thumb{
+  background:#a87519;
+  border-radius:8px;
+}
+.tabs .active,.tabs button.active{
+  background:rgba(245,158,11,.15)!important;
+  color:#ffd477!important;
+  border-color:rgba(245,158,11,.4)!important;
+}
+.tabs button,.tabs .tab{
+  border-radius:9px!important;
+}
+.cmds,.cmdrow,.pages>*{
+  border-color:var(--nx-border)!important;
+}
+.feat-hero{
+  border-color:rgba(245,158,11,.25)!important;
+}
+.feat-grid>*{
+  background:rgba(20,24,33,.94)!important;
+  border:1px solid var(--nx-border)!important;
+  border-radius:15px!important;
+}
+.prem-card{
+  border-color:rgba(245,158,11,.2)!important;
+}
+table{
+  color:#e5e7eb!important;
+}
+th{
+  color:#fbbf24!important;
+  border-bottom:1px solid var(--nx-border)!important;
+}
+td{
+  border-bottom:1px solid var(--nx-border)!important;
+}
+.toast{
+  background:#191d27!important;
+  color:#fff!important;
+  border:1px solid rgba(245,158,11,.45)!important;
+  border-radius:12px!important;
+}
+.scrim{
+  background:rgba(0,0,0,.65)!important;
+  backdrop-filter:blur(3px);
+}
+@media(max-width:700px){
+  .main{padding:14px!important}
+  .top{padding:12px!important}
+  .grid.g4{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .grid.g2{grid-template-columns:1fr!important}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    transition-duration:.01ms!important;
+  }
+}
+</style>
+</head>
+
+<body data-role="{{ role }}" data-user="{{ user }}">
+<div class="blobs"><i></i><i></i><i></i></div>
+<div class="scrim" id="scrim"></div>
+<div class="shell">
+
+<aside class="side" id="side">
+  <div class="logo">
+    <div class="mark">⚡</div>
+    <div><b>TEAM NEXUS</b><small>PREMIUM PANEL</small></div>
+  </div>
+
+  <div class="navlbl">MAIN</div>
+  <button class="nav on" data-v="dash"><span class="e">📊</span>Dashboard</button>
+  <button class="nav" data-v="ctrl"><span class="e">🤖</span>Bot Control<span class="tag">LIVE</span></button>
+  <button class="nav" data-v="cons"><span class="e">🖥</span>Live Console</button>
+  <button class="nav" data-v="feat"><span class="e">✨</span>Bot Features<span class="tag">NEW</span></button>
+
+  <div class="navlbl">LIBRARY</div>
+  <button class="nav" data-v="cmds"><span class="e">📜</span>Commands<span class="tag">300</span></button>
+  <button class="nav" data-v="pages"><span class="e">📖</span>Menu Pages<span class="tag">20</span></button>
+  <button class="nav" data-v="time"><span class="e">🌍</span>World Time</button>
+
+  <div class="navlbl">PREMIUM</div>
+  <button class="nav prem" data-v="prem"><span class="e">👑</span>Premium Tools<span class="tag">PRO</span></button>
+  <button class="nav prem" data-v="acct"><span class="e">🔐</span>My Account</button>
+
+  {% if role == 'admin' %}
+  <button class="nav prem" data-v="admin"><span class="e">🛡</span>Admin Panel<span class="tag">ADMIN</span></button>
+  {% endif %}
+
+  <a class="btn ghost sm" href="/panel" style="margin-top:auto">⬅ Main Panel</a>
+
+  <div class="me" style="margin-top:10px">
+    <div class="av">{{ user[0]|upper }}</div>
+    <div><b>{{ user }}</b><small>{{ role }}</small></div>
+    <a class="btn ghost sm" style="margin-left:auto" href="/logout">Exit</a>
+  </div>
+</aside>
+
+<main class="main">
+  <div class="top">
+    <div class="row">
+      <button class="btn ghost sm burger" id="burger">☰</button>
+      <div>
+        <h1 id="ttl">Dashboard</h1>
+        <p id="sub">Overview of your bot and panel</p>
+      </div>
+    </div>
+    <span class="pill">
+      <span class="dot" id="topdot"></span>
+      <span id="toptxt">Offline</span>
+    </span>
+  </div>
+
+  <!-- DASHBOARD -->
+  <section class="view on" id="v-dash">
+    <div class="grid g4">
+      <div class="card stat"><div class="ic">🟢</div><div class="v" id="s-state">—</div><div class="l">Bot status</div></div>
+      <div class="card stat"><div class="ic">⏱</div><div class="v" id="s-up">0s</div><div class="l">Uptime</div></div>
+      <div class="card stat"><div class="ic">📜</div><div class="v" id="s-cmds">300</div><div class="l">Commands</div></div>
+      <div class="card stat"><div class="ic">🆔</div><div class="v" id="s-uid" style="font-size:22px">—</div><div class="l">Bot UID</div></div>
+    </div>
+
+    <div class="grid g2" style="margin-top:18px">
+      <div class="card">
+        <h3>⚡ Quick actions</h3>
+        <div class="row">
+          <button class="btn green" data-act="start">▶ Start</button>
+          <button class="btn red" data-act="stop">■ Stop</button>
+          <button class="btn" data-act="restart">⟳ Restart</button>
+          <button class="btn ghost" onclick="go('ctrl')">⚙ Setup</button>
+        </div>
+        <p class="hint" style="margin-top:14px">
+          Nickname: <b id="s-nick">—</b> • Region: <b id="s-reg">—</b> • Login mode: <b id="s-mode">—</b>
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🕒 Live clocks</h3>
+        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr)" id="mini-clocks"></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:18px">
+      <h3>🖥 Latest console</h3>
+      <div class="console" id="mini-log" style="height:210px"></div>
+    </div>
+  </section>
+
+  <!-- CONTROL -->
+  <section class="view" id="v-ctrl">
+    <div class="grid g2">
+      <div class="card">
+        <h3>🤖 Bot account <span class="crown">bot.txt</span></h3>
+
+        <div class="field">
+          <label>UID</label>
+          <div class="inp"><span class="ic">🆔</span><input id="c-uid" inputmode="numeric" placeholder="Bot account UID"></div>
+        </div>
+
+        <div class="field">
+          <label>Password</label>
+          <div class="inp">
+            <span class="ic">🔑</span>
+            <input id="c-pw" type="password" placeholder="Leave empty to keep the saved one" autocomplete="new-password">
+            <button class="eye" type="button" onclick="togglePw()">👁</button>
+          </div>
+          <span class="hint" id="pw-hint">—</span>
+        </div>
+
+        <div class="field">
+          <label>Nick name (shown in menus)</label>
+          <div class="inp"><span class="ic">✨</span><input id="c-nick" maxlength="20" placeholder="TEAM NEXUS"></div>
+        </div>
+
+        <div class="field">
+          <label>Region</label>
+          <div class="inp">
+            <span class="ic">🌐</span>
+            <select id="c-reg">
+              <option>BD</option><option>IND</option><option>PK</option>
+              <option>ID</option><option>SG</option><option>BR</option>
+              <option>ME</option><option>NA</option><option>EU</option>
+              <option>TH</option><option>VN</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <button class="btn" id="b-save">💾 Save</button>
+          <button class="btn green" id="b-savestart">🚀 Save &amp; Start</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>🎛 Controls</h3>
+        <div class="row" style="margin-bottom:16px">
+          <button class="btn green" data-act="start">▶ Start</button>
+          <button class="btn red" data-act="stop">■ Stop</button>
+          <button class="btn" data-act="restart">⟳ Restart</button>
+        </div>
+
+        <div class="line">
+          <div><b>Auto start with website</b><small>Bot comes online when the site boots</small></div>
+          <label class="switch"><input type="checkbox" id="c-auto"><span></span></label>
+        </div>
+
+        <div class="line">
+          <div><b>Login device</b><small>Applies on next Start/Restart</small></div>
+          <div class="row">
+            <button class="btn ghost sm" data-mode="phone">📱 Phone</button>
+            <button class="btn ghost sm" data-mode="pc">💻 PC</button>
+          </div>
+        </div>
+
+        <p class="hint" style="margin-top:14px">
+          Your password is stored only in <b>bot.txt</b> on the server and is never sent back to the browser.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONSOLE -->
+  <section class="view" id="v-cons">
+    <div class="card">
+      <div class="row" style="justify-content:space-between;margin-bottom:12px">
+        <h3 style="margin:0">🖥 Live console</h3>
+        <div class="row">
+          <label class="row hint"><input type="checkbox" id="autoscroll" checked> Auto-scroll</label>
+          <button class="btn ghost sm" id="dl">⬇ Download</button>
+          <button class="btn ghost sm" id="clr">🧹 Clear</button>
+        </div>
+      </div>
+      <div class="console" id="log"></div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="view" id="v-feat">
+    <div class="feat-hero card" style="padding:18px 22px">
+      <div>
+        <h3 style="margin:0">🤖 Everything this bot can do</h3>
+        <p class="hint" style="margin-top:6px">Tap any command chip to copy it. Use them in the Free Fire squad / clan chat.</p>
+      </div>
+      <div class="row">
+        <button class="btn" onclick="go('ctrl')">🚀 Start the bot</button>
+        <button class="btn ghost" onclick="go('cmds')">📜 All commands</button>
+      </div>
+    </div>
+    <div class="feat-grid" id="featlist" style="margin-top:18px"></div>
+  </section>
+
+  <!-- COMMANDS -->
+  <section class="view" id="v-cmds">
+    <div class="card">
+      <div class="inp"><span class="ic">🔎</span><input id="q" placeholder="Search 300 commands… (try: time, calc, bold, kg)"></div>
+      <div class="tabs" id="cats"></div>
+      <div class="cmds" id="cmdlist"></div>
+      <div class="empty" id="cmdempty" style="display:none">No command found.</div>
+    </div>
+  </section>
+
+  <!-- PAGES -->
+  <section class="view" id="v-pages">
+    <div class="pages" id="pagelist"></div>
+  </section>
+
+  <!-- TIME -->
+  <section class="view" id="v-time">
+    <div class="card">
+      <div class="inp"><span class="ic">🔎</span><input id="tq" placeholder="Search country… (bd, india, usa, japan)"></div>
+      <p class="hint" style="margin:12px 0">
+        In-game the same data works with <b>/time bd</b>, <b>/time ind</b>, <b>/time usa</b>, <b>/time all</b>, <b>/timediff bd uk</b>
+      </p>
+      <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(190px,1fr))" id="clocks"></div>
+    </div>
+  </section>
+
+  <!-- PREMIUM -->
+  <section class="view" id="v-prem">
+    <div class="grid g4">
+      <div class="card prem-card">
+        <span class="crown">PRO</span>
+        <h3 style="margin-top:12px">🚀 One-click launch</h3>
+        <p class="hint" style="margin-bottom:14px">Save credentials and bring the bot online instantly.</p>
+        <button class="btn" onclick="go('ctrl')">Open Bot Control</button>
+      </div>
+
+      <div class="card prem-card">
+        <span class="crown">PRO</span>
+        <h3 style="margin-top:12px">📖 20-page menu</h3>
+        <p class="hint" style="margin-bottom:14px">Every command, 15 per page, exactly like in-game /help.</p>
+        <button class="btn" onclick="go('pages')">Browse pages</button>
+      </div>
+
+      <div class="card prem-card">
+        <span class="crown">PRO</span>
+        <h3 style="margin-top:12px">🌍 World clock</h3>
+        <p class="hint" style="margin-bottom:14px">50+ countries live. Same list powers /time in game.</p>
+        <button class="btn" onclick="go('time')">Open clocks</button>
+      </div>
+
+      <div class="card prem-card">
+        <span class="crown">PRO</span>
+        <h3 style="margin-top:12px">🔗 Share panel link</h3>
+        <p class="hint" style="margin-bottom:14px">Copy this website's address.</p>
+        <button class="btn" id="copylink">Copy link</button>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:18px">
+      <h3>🧰 Premium tools</h3>
+      <div class="row">
+        <button class="btn" data-act="restart">⟳ Fast restart</button>
+        <button class="btn ghost" id="p-dl">⬇ Export console</button>
+        <button class="btn ghost" data-mode="phone">📱 Phone mode</button>
+        <button class="btn ghost" data-mode="pc">💻 PC mode</button>
+        <button class="btn ghost" id="p-rand">💡 Random command idea</button>
+        <button class="btn ghost" id="p-theme">✨ Confetti</button>
+      </div>
+      <p class="hint" id="p-out" style="margin-top:14px"></p>
+    </div>
+  </section>
+
+  <!-- ACCOUNT -->
+  <section class="view" id="v-acct">
+    <div class="grid g2">
+      <div class="card">
+        <h3>🔐 Change my password</h3>
+        <div class="field">
+          <label>Current password</label>
+          <div class="inp"><span class="ic">🔒</span><input id="a-old" type="password" autocomplete="current-password"></div>
+        </div>
+        <div class="field">
+          <label>New password</label>
+          <div class="inp"><span class="ic">🔑</span><input id="a-new" type="password" autocomplete="new-password"></div>
+        </div>
+        <button class="btn" id="a-save">Update password</button>
+      </div>
+    </div>
+  </section>
+
+  {% if role == 'admin' %}
+  <section class="view" id="v-admin">
+    <div class="grid g2">
+      <div class="card">
+        <h3>➕ Add / update user</h3>
+        <div class="field">
+          <label>Username</label>
+          <div class="inp"><span class="ic">👤</span><input id="u-name"></div>
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <div class="inp"><span class="ic">🔑</span><input id="u-pw" type="password" autocomplete="new-password"></div>
+        </div>
+        <div class="field">
+          <label>Role</label>
+          <div class="inp">
+            <span class="ic">🎖</span>
+            <select id="u-role">
+              <option value="user">user</option>
+              <option value="admin">admin</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn" id="u-add">Save user</button>
+        <p class="hint" style="margin-top:10px">Saving an existing username resets its password.</p>
+      </div>
+
+      <div class="card">
+        <h3>👥 Users</h3>
+        <table>
+          <thead><tr><th>Name</th><th>Role</th><th></th></tr></thead>
+          <tbody id="u-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  {% include '_footer.html' %}
+</main>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

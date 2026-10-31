@@ -1,0 +1,5 @@
+uid=0000000000
+password=PASTE_YOUR_ACCOUNT_PASSWORD_HASH_HERE
+nick=TEAM NEXUS
+region=PK
+autostart=0

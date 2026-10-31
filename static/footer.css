@@ -1,0 +1,18 @@
+/* footer (time + weather + owner buttons) — self-contained, works with or without Tailwind */
+.sitefoot{margin-top:30px;width:100%;border:1.5px solid rgba(0,183,255,.4);border-radius:22px;padding:20px 22px;background:linear-gradient(160deg,rgba(8,20,38,.92),rgba(3,8,16,.95));
+  box-shadow:0 0 40px -14px rgba(0,183,255,.65),inset 0 0 30px rgba(0,183,255,.05);display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:22px;align-items:center;color:#e8f4ff;font-family:'Rajdhani','Segoe UI',system-ui,sans-serif;text-align:left}
+.sitefoot h5{font-family:'Orbitron',sans-serif;font-size:10px;font-weight:900;letter-spacing:2px;color:#5fd4ff;margin:0 0 8px}
+.sitefoot .ft{font-size:34px;font-weight:900;color:#00b7ff;font-variant-numeric:tabular-nums;text-shadow:0 0 18px rgba(0,183,255,.85);line-height:1.1}
+.sitefoot .fd{color:#7f9bb8;font-size:13px;font-weight:600;margin-top:2px}
+.sitefoot .fweather{display:flex;align-items:center;gap:14px}
+.sitefoot .wi{font-size:42px;filter:drop-shadow(0 0 12px rgba(0,183,255,.7))}
+.sitefoot .wt{font-size:30px;font-weight:900;color:#fff;text-shadow:0 0 14px rgba(0,183,255,.6);line-height:1.1}
+.sitefoot .wd{color:#7f9bb8;font-size:12.5px;font-weight:600;line-height:1.5}
+.sitefoot .on{font-weight:900;font-size:15px;margin-bottom:10px;color:#fff;text-shadow:0 0 12px rgba(0,183,255,.6)}
+.sitefoot .soc{display:flex;flex-wrap:wrap;gap:10px}
+.sitefoot .soc a{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:14px;font-weight:800;font-size:13px;text-decoration:none;color:#fff;
+  background:#06101e;border:1.5px solid #00b7ff;box-shadow:0 0 14px -2px rgba(0,183,255,.6);transition:.2s}
+.sitefoot .soc a:hover{transform:translateY(-3px);background:linear-gradient(135deg,#0066ff,#00b7ff,#6fe0ff);color:#021018;box-shadow:0 0 18px rgba(0,183,255,.55),0 0 42px rgba(47,123,255,.25)}
+.sitefoot .soc a small{font-weight:600;opacity:.8}
+.sitecopy{text-align:center;color:#3d6288;font-size:12px;font-weight:600;margin-top:14px;font-family:'Rajdhani',sans-serif}
+@media(max-width:1000px){.sitefoot{grid-template-columns:1fr}}

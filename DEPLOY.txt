@@ -1,0 +1,30 @@
+HASIB CODEX — Render / Railway deploy
+=====================================
+Files:  app.py (website + launcher)   bot_runner.py (the bot itself, started by app.py)
+        Procfile / railway.json / render.yaml / runtime.txt
+
+START COMMAND (both hosts):   python app.py
+BUILD COMMAND (Render):       pip install -r requirements.txt     (Railway does this automatically)
+
+RENDER
+  1. Push this folder to a GitHub repo.
+  2. Render -> New -> Blueprint (it reads render.yaml)  OR  New -> Web Service, Build: pip install -r requirements.txt, Start: python app.py
+  3. Environment: ADMIN_PASS, USER_PASS (and SECRET_KEY is auto-generated).
+
+RAILWAY
+  1. New Project -> Deploy from GitHub repo.  Settings -> Networking -> Generate Domain.
+  2. Variables: ADMIN_PASS, USER_PASS, SECRET_KEY (any long random text).
+
+LOGIN
+  teamnexus1 / USER_PASS   (default teamnexus1)   -> controls bot.txt
+  teamnexusadmin  / ADMIN_PASS  (default teamnexusadmin)    -> admin, can open any bot with ?slot=bot3 and see /api/bots
+  "OR GET YOUR OWN BOT" box on the login page: anyone types any password (6+ chars).
+      new password  -> own account + own file  bot1.txt, bot2.txt, ...   (UID / password / nick saved there)
+      same password -> back into the same bot, they control only their own bot.
+
+KEEP DATA AFTER REDEPLOY
+  Free disks are wiped on every deploy (users.json, bot1.txt ... disappear).
+  Attach a Volume (Railway) / Disk (Render, paid) and set  DATA_DIR=<mount path>  e.g. /data
+  Also keep SECRET_KEY fixed, otherwise password-only users cannot find their account again.
+
+LIMITS (env):  MAX_KEY_USERS=200  MAX_RUNNING_BOTS=50   (each running bot is a separate process = RAM)

@@ -1,0 +1,294 @@
+NEW_OB55_TCP  -  PERSONAL theke add kora feature list
+=====================================================
+bot_core.py / xC4.py:
+ * /5 /3 /4 /6  -> Personal er squad packet (OpEnSq_P, cHSq_P, SEnd_InV_P) diye
+ * /help        -> Personal er tree menu style, 12 page + welcome header
+ * welcome msg  -> squad e invite korle Personal style welcome
+ * /love /luck  -> Personal version (colour design, 50+50 luck predictions)
+ * /s1../s5     -> Badge command (Personal er value), 5 packet, 30s cooldown per uid
+ * /dhadha      -> Bangla riddle (20s por uttor)
+ * /ob55 /ob54  -> OB55 special evo emote,   /s = stop
+ * [number]     -> self emote (emotes.json, 417 ta)
+ * aa[num] TC   -> team code e join kore emote, tarpor leave
+ * /menuN       -> all emote menu (25 ta kore page)
+ * /e           -> ekhon emotes.json er sob number + 377 ta nam
+ * max/new/@max/@new/@evos  -> evo cycle (stop: /s /o /sm @bt /sevos)
+ * /frt /grt    -> friend % / soul %
+emotes.json + emote_menu.json = Personal er full list (OB55 ar nijer extra gulo rakha hoyeche)
+
+UPDATE 2
+ * @max @maxx @evos  -> evo cycle (tumi + bot mirror)   [Personal evo_cycle_sm]
+ * /ob55 /ob54 /max max -> evo cycle (tumi)              [Personal evo_cycle_spam]
+ * new -> gun emote cycle | @new -> tumi + bot           [Personal my_emotes]
+ * @bot -> bot nijei emote kore                          [Personal bal_bal]
+ * extra uid dile hoy:  @max 123456789
+ * Stop: /s  /o  /sm  /sn  @bt
+ * /copy , /copy off  -> bot sobar emote copy kore
+ * /help -> 4 ta compact page (0.6s delay), /helpfull -> 12 page detail menu
+
+UPDATE 3
+ * /love  -> Personal er colour prefix chain add
+ * /roast [name] -> Personal er 20 ta gaming roast line (1.5s gap), nijer nam block list e (ROAST_BLOCKED)
+ * Evo start/stop message -> Personal er Bangla text + colour (/o /sm /sn @bt hint)
+
+UPDATE 4
+ * /help -> 9 ta choto page, line kom, love-style rotating colour (FF1493/00FFFF/FFD700/...)
+ * BLACKLIST_NAMES -> ekta single list (/gali /rt /roast tinta commande-i check hoy)
+ * /ban [uid] -> already-target check, max 3 target, "/ban stop" diye thamano jay
+
+UPDATE 5
+ * /joke -> Personal er full 69 ta Bangla joke, box design + 10 ta colour cycle
+ * /love -> blacklist check add (BLACKLIST_NAMES er nam target kora jabe na)
+ * /help -> premium box border (◎━━━◎) + love-style rotating colour, sob 9 page e
+
+UPDATE 6
+ * /help -> ekhon 11 page, sob working command cover kore:
+   - Page 10: /evo /evos /sevos /gh /ice /room /alltitles
+   - Page 11: /gali /laugh /scream /pray /shower /toilet /meme /coinflip /weather /zodiac /mg /p /unban /stop msg
+
+UPDATE 7
+ * /help menu redesign kora hoyeche notun uploaded "Personal" style e:
+   - ◎━━━━◎ box style theke ■ TITLE ■ + ────── tree-style e change kora hoyeche
+   - Shob 11 page ekhon notun design e
+ * Notun uploaded zip theke feature audit kora hoyeche:
+   - /add, /remove (own account friend add/remove), /admin, /info, /copy —
+     already OB55 e kaj kore, confirm kora holo
+   - Emote data (417 emotes + 360 menu) already fully merged, notun kichu nai
+ * SKIP kora hoyeche (third-party ke target kore spam/harassment, tai add kora hoyni):
+   - /attack (undefined/broken lag-attack function)
+   - /spam_req (target UID ke repeated friend-request spam pathay)
+   - /spm_inv (target UID ke 30 ta unsolicited invite spam pathay)
+
+UPDATE 8
+ * /tt [username] -> real working TikTok info lookup (aiohttp -> kawsar-tikto-info.vercel.app, no fake/mock data)
+ * /yt [channel] -> real working YouTube channel info lookup (aiohttp -> youtube-api.vercel.app)
+ * Both added to /help menu page 11
+ * /joke /love /luck color palettes expanded earlier (UPDATE 7 follow-up)
+ * Website/menu-design and website-wide redesign scope noted but NOT bulk-applied this round —
+   ask which specific page(s) (landing/login/signup/index) to redesign so it is not guessed blind
+ * Declined again (same reasons as before, feature names only changed): /lag, /attack, /spam_req,
+   /spamroom, /sr, /fake_like, /reject, /kkick(LagSquad), /multijoin, /blkemt, repeating /s1-s5
+ * NOTE: uploaded zip's users.json contains real user emails + hashed passwords — this was not
+   copied/redistributed; please rotate those credentials if this file was shared publicly
+
+UPDATE 9
+ * /help menu completely rewritten to match the Personal reference design exactly:
+   - 13 pages total (12 command pages + 1 "BOT SYSTEM" developer info page)
+   - Fixed colour per page (no random colour rotation) — same structure/colours as reference
+   - Only real, working OB55 commands listed (attack/spam-only entries dropped, replaced with
+     working equivalents already in the bot: /tt, /yt, /evo, /evos, /sevos, /gh, /ice, etc.)
+ * Web control panel merged in from the newly uploaded ob55 zip:
+   - server.js, package.json, templates/ (landing, login, signup, index), start.sh, bot.txt, vv.json
+   - users.json was NOT carried over (it held real emails + password hashes from the upload)
+ * Website templates recoloured to a premium dark-blue theme:
+   - Rainbow accent (#ff0055/#00f2ff/#00ff66/#ffea00) replaced with
+     royal blue / sky blue / blue / gold (#2563eb / #38bdf8 / #0ea5e9 / #facc15)
+   - Background darkened to #060b18 across all 4 pages
+ * Reminder: still declined (same reasons as before) — /attack, /spam_req, /spamroom, /sr,
+   /fake_like, /reject, /kkick(LagSquad), /multijoin, /visit (3rd-party "visit booster" API),
+   /blkemt, repeated-/s1-s5-targeting
+
+UPDATE 10
+ * Share cards ported: .s1 .s2 .s3 .s4 .s5 .s6 .s7 .s8 .s11 .t1 (group/room/clan/
+   HUD/title/workshop-map/discount-code share messages, sent to current chat only —
+   not a spam loop, no third-party targeting). .r added (owner-only: restart chat connection).
+ * SECURITY FIX: main.py / app.py had a REAL account uid+password hash hardcoded directly
+   in source code. Removed. main.py now calls load_credentials_from_file("bot.txt") instead —
+   credentials live ONLY in bot.txt, never in source.
+ * bot.txt is now the single credentials file (format: uid=... / password=... / region=...),
+   used by BOTH main.py (bot login) and the web panel's "Save & Start" form.
+ * server.js fixes:
+   - static files now served from templates/ (the dashboard at /index.html was previously
+     unreachable — it redirected to a non-existent /web.html)
+   - the credential-save endpoint now writes bot.txt (was black_apis.txt) and immediately
+     calls restartBot() — saving uid/password from the website brings the bot online automatically
+ * app.py added: single command (`python3 app.py`) that starts the Node web panel AND the
+   Python bot loop together
+ * All 4 templates rebranded to "TEAM NEXUS" (was "LAM CODEX OFCL"), neon dark-blue glow
+   kept/extended, credit line added on every page
+ * NOT built: the index.html front-end already calls /api/control and /api/admin endpoints
+   (named-user sessions with timers + an admin panel that manages OTHER users' sessions/time) —
+   these backend endpoints do not exist in server.js and were NOT added. That pattern is a
+   multi-tenant service collecting many different people's real Free Fire passwords on one
+   shared site; declined for the same reason as the earlier credential-harvesting concern.
+   The single-owner flow (one bot.txt, one admin, "Save & Start") is fully wired instead.
+
+UPDATE 11
+ * Website login/signup were calling /api/login, /api/signup, and redirecting to /login,
+   /signup, /panel — none of these existed in server.js, so the login page could never work.
+   All of these are now implemented:
+   - /api/login, /api/signup (sha256-hashed passwords, stored in users.json)
+   - page routes: /login, /signup, /panel (control panel), root "/" now goes to /login first
+ * users.json seeded with 2 accounts (passwords hashed with sha256, not plaintext):
+     owner -> username: teamnexusadmin / password: teamnexusadmin
+     user  -> username: teamnexus1     / password: teamnexus1
+   (This replaces the old users.json that had other people's real emails/passwords in it.)
+ * Confirmed working (hash logic unit-tested directly): correct creds log in, wrong
+   password is rejected. Could not start the full Express server in this sandbox
+   (no outbound network here to npm install) — please do a quick live login test after
+   you deploy/run `npm install && node server.js` (or `python3 app.py`).
+ * NOTE (unchanged from before): the signup page's "Google" button is a locally-simulated
+   account picker (reads emails from this browser's own localStorage), not real Google
+   OAuth — it only pre-fills the email/name fields, it does not see or store a real Gmail
+   password. Said again here for clarity since this update touched the same pages.
+
+UPDATE 12
+ * /translet [lang] [text] added -> real working translation via MyMemory API
+   (aiohttp, no API key needed). Supports: bn (Bangla), en (English), hi (Hindi),
+   ar (Arabic), zh/zh-CN (Chinese). Source language auto-detected from script
+   (Bengali/Arabic/Devanagari/CJK unicode ranges, else assumed English).
+   Example: /translet bn how are you
+   Added to /help page 7.
+
+UPDATE 13
+ * /restart added (same as .r): owner-only, closes the connection so the existing
+   auto-reconnect loop brings the bot back online shortly after.
+ * /pc and /phone added (owner-only): switches the login device profile between
+   PC and Android-handheld values (cosmetic device info only — same account, same
+   permissions, just what the client shows the account logging in as). Saved to
+   platform_mode.txt so it survives a restart. IMPORTANT: this only takes effect on
+   the next FULL login — a quick /restart alone reuses the existing session and will
+   NOT change it; fully stop and start the bot (or use the website's Stop/Start) after
+   switching mode.
+ * Share-card branding updated per request:
+   - .s6 ShareCode -> "TEAM NEXUSSHARECODE"
+   - .s7 WorkshopCode -> "TEAM NEXUSFFCRFLANDCODE"
+   - .s3, .s5, .s11 now show "TEAM NEXUS" literally (was the stylised unicode brand)
+   - .s1, .s2, .s4, .s8, .t1 have NO text/name field in their real schema (just numeric
+     IDs/flags) — nothing was added to them since inventing a field the game client
+     doesn't expect could break the share card instead of showing a name.
+
+UPDATE 14
+ * 20 new working commands added (batch 1 of "50+" — see note below):
+   /password [n], /bmi [kg] [m], /age [year], /dice [NdM], /reverse [txt],
+   /count [txt], /anagram [word], /binary [txt], /morse [txt], /leet [txt],
+   /rot13 [txt], /percent [x] of [y], /pick [a,b,c], /yesno, /compliment [name],
+   /fact, /namegen, /color, /define [word] (dictionaryapi.dev), /chucknorris
+   (chucknorris.io) — all added to /help page 13.
+ * NOTE on "50+ unique features": adding 50 at once without testing each one risks
+   shipping broken/fake commands — exactly what was asked to avoid (see .R/.T1/.S
+   session: "working command add korba, fake add korba na"). This batch of 20 is
+   fully implemented and logic-tested. Happy to keep adding more batches like this.
+
+UPDATE 15
+ * /dance [uid2] [uid3] [uid4] / /dance stop — 8-emote dance sequence (8s apart) for
+   sender + optional extra UIDs given on the command. Added to /help page 2.
+ * /spin — lucky-spin random fun outcome text. Added to /help page 10.
+ * /love now also fires a matching emote on the sender alongside each message line
+   (was text-only before).
+ * /gali now fires one taunt/laugh emote after the message sequence.
+ * /help now fires a friendly greeting emote right when the menu header is sent.
+ * /song_play (auto-play a song by name over "mic") — NOT implemented: this bot only
+   sends text/protobuf chat and emote packets over TCP. Free Fire's chat protocol has
+   no audio/voice channel in it, so there is no packet that could stream or play audio
+   — this isn't a policy decision, it's just not something this protocol can do.
+
+UPDATE 15
+ * BUG FIX: Guild/clan chat message sending (/help, /joke, any safe_send_message when
+   used from clan chat) was broken — NewClanChatPacket() hardcoded a fake placeholder
+   sender UID (16801068917) and name ("TEAM NEXUS" literal) instead of using the bot's real
+   authenticated account UID (bot_uid) and brand name. The server had no reason to accept
+   a message claiming to be from an account that wasn't actually logged in, so clan-chat
+   sends were silently failing. Fixed to use the real bot_uid + BOT_BRAND.
+
+UPDATE 16
+ * /display_msg and /display_msg_off added (owner-only): swaps active xC4.py with
+   xC4_1.py ("new") / xC4_2.py ("old") and does a FULL restart (not just reconnect)
+   so the swapped code actually loads. Both files start as plain copies of the current
+   xC4.py — edit either file yourself to make the swap meaningfully different.
+ * /name [text] added: 3 big bordered banner messages (fullwidth stylised letters) —
+   green, red, and multi-colour per-letter.
+ * Confirmed from earlier update: /love and /gali already send an auto emote alongside
+   their text (love/propose emote cycle on /love, a taunt emote on /gali).
+ * Added /display_msg, /display_msg_off, /name to /help pages 12 and 13.
+ * NOT done (no verified source, would risk fake/broken entries):
+   - "all Free Fire library emotes" — the 417+74 already merged are everything verified
+     from the uploaded sources; if you have a specific emote-id list/JSON, share it and
+     it'll be merged for real.
+   - Extending .s1-.s11 share cards to .s12-.s20 "evo gun preview" — no real schema seen
+     for that card type yet, so nothing was invented for it.
+
+UPDATE 17
+ * REAL BUG FIX: /pc and /phone (and /restart, /display_msg) could hang "offline" forever
+   instead of coming back online. Root cause: the reconnect loop's `await reader.read(9999)`
+   could block indefinitely waiting on the socket, so it might never notice the restart flag
+   had been set. Fixed by wrapping the read in a 5-second timeout in both TcPChaT and
+   TcPOnLine's loops, so the restart flag is checked at least every 5 seconds no matter what.
+ * /love and /dance restored to EXACTLY match the pasted ARIYAN-source design (colours,
+   wording, timing) — the earlier version had drifted (random colour rotation on /love,
+   English text on /dance) which was a mistake; only real bugs were fixed, nothing redesigned.
+   /dance's stop command is now /as (matching the source) with /dance stop kept as an alias.
+ * Emote names expanded: merged alia_emotes.json (431 parsed from the uploaded alia2.json,
+   93 of them genuinely new) into NAME_EMOTES -> now 470 named emotes total, usable with
+   /e <uid> <name>. Checked ARIYAN.zip's emotes.json too — no new numbered slots to add,
+   everything in it was already covered.
+ * On "200+ commands": same position as before (see UPDATE 14) — 200 commands added without
+   testing each one is how a bot ends up full of broken/fake entries, which is the opposite
+   of what's been asked for repeatedly in this thread. Real, working additions keep coming
+   in tested batches instead.
+
+UPDATE 18  (PREMIUM WEB PANEL + 300-COMMAND MENU)
+ * hasib.py (NEW): run  `python hasib.py`  -> starts the website (Flask, port $PORT or 8080).
+   The bot is NOT started directly any more: you open the website link, log in, enter
+   UID / Password / Nick in "Bot Control" and press "Save & Start". bot.txt is written by the site.
+   Optional autostart=1 in bot.txt (or the switch in the panel) brings the bot up when the site boots.
+   A watchdog restarts the bot if it dies while you want it running.
+ * Logins (stored as salted hashes in users.json, change in Admin / My Account):
+     user  : teamnexus1 / teamnexus1          admin : teamnexusadmin / teamnexusadmin
+   Login is rate-limited (6 wrong tries / 5 min per IP). Password in bot.txt is never sent back to the browser.
+ * Website redesigned: white + orange premium theme, animated background, sliding sidebar with
+   Dashboard / Bot Control / Live Console / Commands / Menu Pages / World Time / Premium Tools /
+   My Account / Admin Panel, live clocks (54 countries), searchable 300-command list, toasts, confetti.
+   Old Node files (server.js, package.json, app.py, old templates) removed - hasib.py replaces them.
+ * bot.txt now has  nick=  (menu brand name) and  autostart=  ; main.py reads them.
+ * extra_cmds.py (NEW): ~190 new offline commands, all unit-smoke-tested:
+     TIME: /time [bd|ind|usa|uk|uae|jp|... 54 codes] /time all /timeall /timediff /zones /date /day /weekno
+           /yearprog /timestamp /fromunix /countdown /leap
+     MATH & MONEY: /calc /plus /sub /mul /div /pow /sqrt /factorial /fib /isprime /pfactors /gcd /lcm /avg
+           /median /roman /tohex /tobin /tip /discount /vat /si /ci /emi /circle /rect /triangle ...
+     CONVERT: /c2f /f2c /km2mi /kg2lb /m2ft /cm2in /l2gal /kmh2mph /gb2mb ... (23)
+     TEXT & FONTS: /upper /snake /slug /palindrome /caesar /b64 /md5 /sha256 /uuid /bold /script /gothic
+           /wide /bubble /smallcaps /flip /bnum (Bangla digits) ...
+     FUN & ART: /quote /proverb /pickup /dadjoke /trivia /puzzle /vibe /aura /fortune /iq /lotto /slots
+           /guess /rpsls /pyramid /diamond /box /banner /progress /catart ...
+     BOT: /ping /uptime /botinfo /cmdcount /search [word] /randcmd /owner /version
+ * /help is now generated from one registry: EXACTLY 20 pages x 15 commands = 300 listed commands.
+   /help        -> all 20 pages      /help 7 -> only page 7
+ * Same skipped list as before (no attack / spam / lag / fake-like commands).
+ * Not tested here: the live Free Fire login/TCP part (no game server or network in the sandbox) -
+   test /help, /time bd, /time ind on your account after deploying.
+
+UPDATE 19  (BLACK + GLOWING NEON BLUE PANEL)
+ * Templates (login.html, panel.html) kept - only redesigned. static/style.css rewritten:
+   black background, glowing neon blue (#00b7ff / #2f7bff) buttons, cards, inputs and clocks.
+ * UID / Password flow unchanged: Bot Control -> UID + password + nick -> "Save & Start"
+   writes bot.txt and starts the bot immediately.
+ * NEW "Bot Features" page (sidebar) - 16 feature cards with tap-to-copy example commands.
+ * NEW footer (templates/_footer.html + static/footer.js) on login AND panel:
+   live time, live weather (Open-Meteo, no key; uses your location, falls back to Dhaka),
+   owner buttons - Whatsapp 03008891580, Fucker ALPHA , JUST CHILL FUCK (click = opens the link).
+
+UPDATE 20  (NEW TEMPLATES: landing / login / panel — dark neon glowing blue)
+ * Uploaded templates added: landing.html, login.html, panel.html (was index.html). Old white/orange
+   dashboard is kept as templates/pro.html -> open at /pro (command search, world clocks, admin users).
+ * Site flow:  /  -> landing (YouTube / Telegram / TikTok buttons) -> /login -> /panel
+ * panel.html: SLIDE MENU - hamburger opens a drawer that slides in; close with X, tap outside, Esc or swipe left;
+   swipe right from the left edge opens it. Menu: Bot Control + Logs, Bot Features, All Commands, Pro Dashboard, socials, Logout.
+ * Control section: Credit/Bot name, Bot UID, Password, Region -> written to bot.txt. "Save & Start" starts the bot.
+   Stop / Restart / Save / Phone-PC login mode. LIVE TERMINAL is directly below the controls (polls /api/logs).
+ * Colours: black + glowing neon blue everywhere (yellow / pink / magenta accents replaced).
+ * Footer on landing, login and panel: live time, live weather, owner buttons WS 03008891580, FUCKER ALPHA,.
+ * NOT carried over (on purpose):
+   - Public /signup + "Continue with Google": the Google button was a fake local account picker, and open sign-up would let
+     any visitor control the bot account. Create logins from Pro Dashboard -> Admin Panel instead.
+   - Guest timers / admin time-limits (/api/control, /api/admin): that design collects many people's game passwords on
+     one site; the single-owner bot.txt flow is used instead.
+ * Login API now also returns {status, message} so the new login page works.
+
+UPDATE — RENDER / RAILWAY DEPLOY + MULTI-USER
+ * hasib.py -> app.py (website + launcher).   old main.py -> bot_runner.py (the bot process).
+ * start command:  python app.py     (Procfile, railway.json, render.yaml, runtime.txt, DEPLOY.txt added)
+ * Login page: new "OR GET YOUR OWN BOT" box. Any password (6+ chars) -> own account + own file bot1.txt, bot2.txt ...
+   Same password again -> same bot. Each person controls only their own bot. Admin (teamnexusadmin) can see /api/bots and open any ?slot=botN.
+ * teamnexus / teamnexusadmin keep working (bot.txt). Set USER_PASS / ADMIN_PASS env vars to change their passwords on the host.
+ * DATA_DIR env = folder for users.json + bot files (point it at a volume/disk so data survives redeploys).
